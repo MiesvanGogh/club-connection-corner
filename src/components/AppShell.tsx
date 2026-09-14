@@ -49,10 +49,10 @@ export function AppShell({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   const roleLabel = auth.isAdmin
-    ? roleLabels.Administrator
+    ? roleLabels["Administrator"]
     : auth.isTrainer
-      ? roleLabels.Trainer
-      : roleLabels.Player;
+      ? roleLabels["Trainer"]
+      : roleLabels["Player"];
 
   const displayName = auth.name ?? auth.email ?? "Ingelogd";
   const avatar = displayName.slice(0, 2).toUpperCase();
