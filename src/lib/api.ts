@@ -60,7 +60,7 @@ export async function api<T>(
     res = await fetch(`${getApiBase()}${path}`, {
       method,
       headers,
-      body: body === undefined ? undefined : JSON.stringify(body),
+      body: body === undefined ? null : JSON.stringify(body),
     });
   } catch {
     throw new ApiError(0, messageForStatus(0, ""));
