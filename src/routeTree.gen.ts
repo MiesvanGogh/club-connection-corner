@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InloggenRouteImport } from './routes/inloggen'
+import { Route as RegistrerenRouteImport } from './routes/registreren'
+import { Route as WachtwoordResettenRouteImport } from './routes/wachtwoord-resetten'
+import { Route as WachtwoordVergetenRouteImport } from './routes/wachtwoord-vergeten'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InloggenRoute = InloggenRouteImport.update({
+  id: '/inloggen',
+  path: '/inloggen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegistrerenRoute = RegistrerenRouteImport.update({
+  id: '/registreren',
+  path: '/registreren',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WachtwoordResettenRoute = WachtwoordResettenRouteImport.update({
+  id: '/wachtwoord-resetten',
+  path: '/wachtwoord-resetten',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WachtwoordVergetenRoute = WachtwoordVergetenRouteImport.update({
+  id: '/wachtwoord-vergeten',
+  path: '/wachtwoord-vergeten',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/inloggen': typeof InloggenRoute
+  '/registreren': typeof RegistrerenRoute
+  '/wachtwoord-resetten': typeof WachtwoordResettenRoute
+  '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/inloggen': typeof InloggenRoute
+  '/registreren': typeof RegistrerenRoute
+  '/wachtwoord-resetten': typeof WachtwoordResettenRoute
+  '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/inloggen': typeof InloggenRoute
+  '/registreren': typeof RegistrerenRoute
+  '/wachtwoord-resetten': typeof WachtwoordResettenRoute
+  '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/inloggen'
+    | '/registreren'
+    | '/wachtwoord-resetten'
+    | '/wachtwoord-vergeten'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/inloggen'
+    | '/registreren'
+    | '/wachtwoord-resetten'
+    | '/wachtwoord-vergeten'
+  id:
+    | '__root__'
+    | '/'
+    | '/inloggen'
+    | '/registreren'
+    | '/wachtwoord-resetten'
+    | '/wachtwoord-vergeten'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InloggenRoute: typeof InloggenRoute
+  RegistrerenRoute: typeof RegistrerenRoute
+  WachtwoordResettenRoute: typeof WachtwoordResettenRoute
+  WachtwoordVergetenRoute: typeof WachtwoordVergetenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inloggen': {
+      id: '/inloggen'
+      path: '/inloggen'
+      fullPath: '/inloggen'
+      preLoaderRoute: typeof InloggenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/registreren': {
+      id: '/registreren'
+      path: '/registreren'
+      fullPath: '/registreren'
+      preLoaderRoute: typeof RegistrerenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wachtwoord-resetten': {
+      id: '/wachtwoord-resetten'
+      path: '/wachtwoord-resetten'
+      fullPath: '/wachtwoord-resetten'
+      preLoaderRoute: typeof WachtwoordResettenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wachtwoord-vergeten': {
+      id: '/wachtwoord-vergeten'
+      path: '/wachtwoord-vergeten'
+      fullPath: '/wachtwoord-vergeten'
+      preLoaderRoute: typeof WachtwoordVergetenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InloggenRoute: InloggenRoute,
+  RegistrerenRoute: RegistrerenRoute,
+  WachtwoordResettenRoute: WachtwoordResettenRoute,
+  WachtwoordVergetenRoute: WachtwoordVergetenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
