@@ -11,9 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InloggenRouteImport } from './routes/inloggen'
+import { Route as ProfielRouteImport } from './routes/profiel'
 import { Route as RegistrerenRouteImport } from './routes/registreren'
+import { Route as StatistiekenRouteImport } from './routes/statistieken'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as WachtwoordResettenRouteImport } from './routes/wachtwoord-resetten'
 import { Route as WachtwoordVergetenRouteImport } from './routes/wachtwoord-vergeten'
+import { Route as WedstrijdenIndexRouteImport } from './routes/wedstrijden.index'
+import { Route as WedstrijdenMatchIdRouteImport } from './routes/wedstrijden.$matchId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,9 +30,24 @@ const InloggenRoute = InloggenRouteImport.update({
   path: '/inloggen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfielRoute = ProfielRouteImport.update({
+  id: '/profiel',
+  path: '/profiel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegistrerenRoute = RegistrerenRouteImport.update({
   id: '/registreren',
   path: '/registreren',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatistiekenRoute = StatistiekenRouteImport.update({
+  id: '/statistieken',
+  path: '/statistieken',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WachtwoordResettenRoute = WachtwoordResettenRouteImport.update({
@@ -40,59 +60,104 @@ const WachtwoordVergetenRoute = WachtwoordVergetenRouteImport.update({
   path: '/wachtwoord-vergeten',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WedstrijdenIndexRoute = WedstrijdenIndexRouteImport.update({
+  id: '/wedstrijden/',
+  path: '/wedstrijden/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WedstrijdenMatchIdRoute = WedstrijdenMatchIdRouteImport.update({
+  id: '/wedstrijden/$matchId',
+  path: '/wedstrijden/$matchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inloggen': typeof InloggenRoute
+  '/profiel': typeof ProfielRoute
   '/registreren': typeof RegistrerenRoute
+  '/statistieken': typeof StatistiekenRoute
+  '/team': typeof TeamRoute
   '/wachtwoord-resetten': typeof WachtwoordResettenRoute
   '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
+  '/wedstrijden/$matchId': typeof WedstrijdenMatchIdRoute
+  '/wedstrijden/': typeof WedstrijdenIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inloggen': typeof InloggenRoute
+  '/profiel': typeof ProfielRoute
   '/registreren': typeof RegistrerenRoute
+  '/statistieken': typeof StatistiekenRoute
+  '/team': typeof TeamRoute
   '/wachtwoord-resetten': typeof WachtwoordResettenRoute
   '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
+  '/wedstrijden/$matchId': typeof WedstrijdenMatchIdRoute
+  '/wedstrijden': typeof WedstrijdenIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/inloggen': typeof InloggenRoute
+  '/profiel': typeof ProfielRoute
   '/registreren': typeof RegistrerenRoute
+  '/statistieken': typeof StatistiekenRoute
+  '/team': typeof TeamRoute
   '/wachtwoord-resetten': typeof WachtwoordResettenRoute
   '/wachtwoord-vergeten': typeof WachtwoordVergetenRoute
+  '/wedstrijden/$matchId': typeof WedstrijdenMatchIdRoute
+  '/wedstrijden/': typeof WedstrijdenIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/inloggen'
+    | '/profiel'
     | '/registreren'
+    | '/statistieken'
+    | '/team'
     | '/wachtwoord-resetten'
     | '/wachtwoord-vergeten'
+    | '/wedstrijden/$matchId'
+    | '/wedstrijden/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/inloggen'
+    | '/profiel'
     | '/registreren'
+    | '/statistieken'
+    | '/team'
     | '/wachtwoord-resetten'
     | '/wachtwoord-vergeten'
+    | '/wedstrijden/$matchId'
+    | '/wedstrijden'
   id:
     | '__root__'
     | '/'
     | '/inloggen'
+    | '/profiel'
     | '/registreren'
+    | '/statistieken'
+    | '/team'
     | '/wachtwoord-resetten'
     | '/wachtwoord-vergeten'
+    | '/wedstrijden/$matchId'
+    | '/wedstrijden/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InloggenRoute: typeof InloggenRoute
+  ProfielRoute: typeof ProfielRoute
   RegistrerenRoute: typeof RegistrerenRoute
+  StatistiekenRoute: typeof StatistiekenRoute
+  TeamRoute: typeof TeamRoute
   WachtwoordResettenRoute: typeof WachtwoordResettenRoute
   WachtwoordVergetenRoute: typeof WachtwoordVergetenRoute
+  WedstrijdenMatchIdRoute: typeof WedstrijdenMatchIdRoute
+  WedstrijdenIndexRoute: typeof WedstrijdenIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -111,11 +176,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InloggenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profiel': {
+      id: '/profiel'
+      path: '/profiel'
+      fullPath: '/profiel'
+      preLoaderRoute: typeof ProfielRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/registreren': {
       id: '/registreren'
       path: '/registreren'
       fullPath: '/registreren'
       preLoaderRoute: typeof RegistrerenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statistieken': {
+      id: '/statistieken'
+      path: '/statistieken'
+      fullPath: '/statistieken'
+      preLoaderRoute: typeof StatistiekenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wachtwoord-resetten': {
@@ -132,15 +218,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WachtwoordVergetenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wedstrijden/': {
+      id: '/wedstrijden/'
+      path: '/wedstrijden'
+      fullPath: '/wedstrijden/'
+      preLoaderRoute: typeof WedstrijdenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wedstrijden/$matchId': {
+      id: '/wedstrijden/$matchId'
+      path: '/wedstrijden/$matchId'
+      fullPath: '/wedstrijden/$matchId'
+      preLoaderRoute: typeof WedstrijdenMatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InloggenRoute: InloggenRoute,
+  ProfielRoute: ProfielRoute,
   RegistrerenRoute: RegistrerenRoute,
+  StatistiekenRoute: StatistiekenRoute,
+  TeamRoute: TeamRoute,
   WachtwoordResettenRoute: WachtwoordResettenRoute,
   WachtwoordVergetenRoute: WachtwoordVergetenRoute,
+  WedstrijdenMatchIdRoute: WedstrijdenMatchIdRoute,
+  WedstrijdenIndexRoute: WedstrijdenIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

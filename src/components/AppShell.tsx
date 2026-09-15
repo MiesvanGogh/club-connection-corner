@@ -42,7 +42,7 @@ export function AppShell({
   teamName,
 }: {
   children: ReactNode;
-  teamName?: string;
+  teamName?: string | undefined;
 }) {
   const auth = useAuth();
   const navigate = useNavigate();
