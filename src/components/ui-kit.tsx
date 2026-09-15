@@ -142,7 +142,7 @@ export function Loading({ label = "Laden…" }: { label?: string }) {
   );
 }
 
-export function ErrorNote({ message }: { message?: string | null }) {
+export function ErrorNote({ message }: { message?: string | null | undefined }) {
   if (!message) return null;
   return (
     <div className="rounded-xl border border-destructive/25 bg-destructive/10 px-3 py-2.5 text-xs font-medium text-destructive">
